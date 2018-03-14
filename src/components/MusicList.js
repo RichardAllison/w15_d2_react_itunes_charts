@@ -4,6 +4,11 @@ class MusicList extends Component {
 
   constructor(props) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.props.onMusicItemSelected(event.target.value);
   }
 
   render() {
@@ -12,9 +17,11 @@ class MusicList extends Component {
     })
 
     return (
-      <ul>
-        {musicListItems}
-      </ul>
+      <form onChange={this.handleChange}>
+        <ul>
+          {musicListItems}
+        </ul>
+      </form>
     )
   }
 

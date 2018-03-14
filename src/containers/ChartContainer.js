@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MusicList from '../components/MusicList';
-
+import MusicDetails from '../components/MusicDetails';
 
 class ChartContainer extends Component {
   constructor(props) {
@@ -9,6 +9,7 @@ class ChartContainer extends Component {
       chart: [],
       selectedMusicItem: null
     }
+    this.handleMusicItemSelected = this.handleMusicItemSelected.bind(this)
   }
 
   componentDidMount() {
@@ -32,12 +33,13 @@ class ChartContainer extends Component {
 
   render() {
     const chartMusicNames = this.state.chart.map(item => item['im:name']['label'])
-
+    const selectedMusicItem = this.state.chart[this.state.selectedMusicItem];
 
     return (
       <div>
-        <MusicList chartMusicNames={chartMusicNames}/>
-
+        <MusicList chartMusicNames={chartMusicNames}
+          onMusicItemSelected={this.handleMusicItemSelected}/>
+        <MusicDetails musicItem={selectedMusicItem}/>
       </div>
     )
   }
