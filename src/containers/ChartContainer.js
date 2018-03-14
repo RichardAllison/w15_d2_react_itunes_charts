@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import MusicList from '../components/MusicList';
 
+
 class ChartContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chart: []
+      chart: [],
+      selectedMusicItem: null
     }
   }
 
@@ -24,12 +26,18 @@ class ChartContainer extends Component {
     request.send();
   }
 
+  handleMusicItemSelected(index) {
+    this.setState({selectedMusicItem: index});
+  }
+
   render() {
     const chartMusicNames = this.state.chart.map(item => item['im:name']['label'])
+
 
     return (
       <div>
         <MusicList chartMusicNames={chartMusicNames}/>
+
       </div>
     )
   }

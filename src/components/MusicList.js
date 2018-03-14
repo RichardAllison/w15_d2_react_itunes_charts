@@ -8,7 +8,7 @@ class MusicList extends Component {
 
   render() {
     const musicListItems = this.props.chartMusicNames.map((chartMusicName, index) => {
-      return <li key={index}>{chartMusicName}</li>
+      return <li key={index}><input type="radio" name="chart-items" id={"chart-item-"+index} value={index}></input><label htmlFor={"chart-item-"+index}>{chartMusicName}</label></li>
     })
 
     return (
