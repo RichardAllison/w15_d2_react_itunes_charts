@@ -17,11 +17,13 @@ class ChartsList extends Component {
     })
 
     return (
-      <form onChange={this.handleChange}>
-        <ol>
-          {chartListItems}
-        </ol>
-      </form>
+      <div id="chart">
+        <form onChange={this.handleChange}>
+          <ol>
+            {chartListItems}
+          </ol>
+        </form>
+      </div>
     )
   }
 

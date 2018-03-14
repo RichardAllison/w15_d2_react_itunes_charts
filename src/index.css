@@ -6,9 +6,25 @@ body {
 
 input[type=radio] {
   display: none;
+}
+
+label {
   cursor: pointer;
 }
 
-#root {
+label:hover {
+  color:dodgerblue;
+}
+
+#container {
   display: flex;
+  width: 100%;
+}
+
+#chart {
+  width: 50%
+}
+
+#details-display {
+  width: 50%;
 }

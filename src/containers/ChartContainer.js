@@ -38,12 +38,14 @@ class ChartContainer extends Component {
     return (
       <div>
         <h1>UK Top Charts</h1>
-        <ChartsList chartItemNames={chartItemNames}
-          onChartItemSelected={this.handleChartItemSelected}/>
-        <ChartItemDetails chartItem={selectedChartItem}/>
-      </div>
-    )
+        <div id="container">
+          <ChartsList chartItemNames={chartItemNames}
+            onChartItemSelected={this.handleChartItemSelected}/>
+            <ChartItemDetails chartItem={selectedChartItem}/>
+          </div>
+        </div>
+      )
+    }
   }
-}
 
-export default ChartContainer;
+  export default ChartContainer;
