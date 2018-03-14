@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import MusicList from '../components/MusicList';
-import MusicDetails from '../components/MusicDetails';
+import ChartsList from '../components/ChartsList';
+import ChartItemDetails from '../components/ChartItemDetails';
 
 class ChartContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       chart: [],
-      selectedMusicItem: null
+      selectedChartItem: null
     }
-    this.handleMusicItemSelected = this.handleMusicItemSelected.bind(this)
+    this.handleChartItemSelected = this.handleChartItemSelected.bind(this)
   }
 
   componentDidMount() {
@@ -27,19 +27,20 @@ class ChartContainer extends Component {
     request.send();
   }
 
-  handleMusicItemSelected(index) {
-    this.setState({selectedMusicItem: index});
+  handleChartItemSelected(index) {
+    this.setState({selectedChartItem: index});
   }
 
   render() {
-    const chartMusicNames = this.state.chart.map(item => item['im:name']['label'])
-    const selectedMusicItem = this.state.chart[this.state.selectedMusicItem];
+    const chartItemNames = this.state.chart.map(item => item['im:name']['label'])
+    const selectedChartItem = this.state.chart[this.state.selectedChartItem];
 
     return (
       <div>
-        <MusicList chartMusicNames={chartMusicNames}
-          onMusicItemSelected={this.handleMusicItemSelected}/>
-        <MusicDetails musicItem={selectedMusicItem}/>
+        <h1>UK Top Charts</h1>
+        <ChartsList chartItemNames={chartItemNames}
+          onChartItemSelected={this.handleChartItemSelected}/>
+        <ChartItemDetails chartItem={selectedChartItem}/>
       </div>
     )
   }
