@@ -5,7 +5,7 @@ class ChartContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chartsMusic: []
+      chart: []
     }
   }
 
@@ -17,17 +17,19 @@ class ChartContainer extends Component {
     request.addEventListener('load', () => {
       if (request.status !== 200) return;
       const jsonString = request.responseText;
-      const chartObjects = JSON.parse(jsonString);
-      this.setState({charts: chartObjects})
+      const chartObject = JSON.parse(jsonString);
+      this.setState({chart: chartObject.feed.entry})
     });
 
     request.send();
   }
 
   render() {
+    const chartMusicNames = this.state.chart.map(item => item['im:name']['label'])
+
     return (
       <div>
-        <MusicList chartsMusic={this.state.chartsMusic}/>
+        <MusicList chartMusicNames={chartMusicNames}/>
       </div>
     )
   }
